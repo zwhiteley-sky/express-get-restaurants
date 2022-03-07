@@ -4,7 +4,7 @@ const {sequelize} = require("./db")
 
 const syncSeed = async () => {
     await sequelize.sync({force: true});
-    await Restaurant.create(seedData[0])
+    await Restaurant.bulkCreate(seedData)
 }
 
 syncSeed()
