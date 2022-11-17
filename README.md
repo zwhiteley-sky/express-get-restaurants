@@ -22,3 +22,18 @@ npm start
 
 ![image (26)](https://user-images.githubusercontent.com/44912347/202527699-972e58f4-f0ec-4dda-a3ee-e9def56cf88a.png)
 
+## Part 2: Route Parameters
+1. In your `server.js` file, use express to handle a `GET` request to the endpoint `"/restaurants"` include a URL Parameter to the endpoint `“restaurants”` named `“id”`.
+2. In your `“/restaurants”` with the URL parameter id route handler get the particular restaurant via the method `Restaurant.findByPk()`.
+3. The endpoint will need to fetch the particular restaurant based on the value of your route parameter from the database - have a look at the Sequelize Models `findByPk()` method to help you with this.
+4. Send the found restaurant as a JSON response (`res.json()`).
+5. Test your endpoint using Postman by sending a `GET` request to `http://localhost:3000/restaurants/1`. Your browser should output the following on Postman:
+
+![image](https://user-images.githubusercontent.com/44912347/202531981-59b58d9e-3a0d-473a-a2c3-c885d906a1d7.png)
+
+## Part 3: `POST`, `PUT`, and `DELETE` Restaurants
+1. Include middleware to parse data included in the body of your request as JSON and URL Encoded. You can use either for this activity.
+2. Create an express route for creating (adding) a new restaurant on your restaurant database.
+3. Create an express route for updating (replacing) an existing restaurant with a new restaurant on your restaurant database based on ID in the route. For example, `restaurant/2` would update the restaurant with an ID of 2.
+4. Create an express route for deleting (removing) a restaurant on your database based on the id in the route. For example, `restaurant/2` would delete the restaurant with an ID of 2.
+5. Test your “Main Assignment” endpoint on Postman by making a `GET`, `POST`, `PUT`, and `DELETE` requests to http://localhost:3000/restaurants/
