@@ -23,20 +23,51 @@ npm start
 ![image (26)](https://user-images.githubusercontent.com/44912347/202527699-972e58f4-f0ec-4dda-a3ee-e9def56cf88a.png)
 
 ## Part 2: Route Parameters
-1. In your `app.js` file, use express to handle a `GET` request to the endpoint `"/restaurants"` include a URL Parameter to the endpoint `“restaurants”` named `“id”`.
-2. In your `“/restaurants”` with the URL parameter id route handler get the particular restaurant via the method `Restaurant.findByPk()`.
-3. The endpoint will need to fetch the particular restaurant based on the value of your route parameter from the database - have a look at the Sequelize Models `findByPk()` method to help you with this.
+1. In your `app.js` file, Use Express to create `GET /restaurants/:id` endpoint.
+2. In `GET /restaurants/:id` get the id using the `req.params` object.
+3. In `GET /restaurants/:id` get the particular restaurant via the method `findByPk()`.
 4. Send the found restaurant as a JSON response (`res.json()`).
-5. Test your endpoint using Postman by sending a `GET` request to `http://localhost:3000/restaurants/1`. Your browser should output the following on Postman:
+5. Start your server with `node server.js`.
+5. Test your endpoint using Postman or your browser by sending a `GET` request to `http://localhost:3000/restaurants/1`. Your browser should output the following on Postman:
 
 ![image](https://user-images.githubusercontent.com/44912347/202531981-59b58d9e-3a0d-473a-a2c3-c885d906a1d7.png)
 
 ## Part 3: `POST`, `PUT`, and `DELETE` Restaurants
-1. Include middleware to parse data included in the body of your request as JSON and URL Encoded. You can use either for this activity.
-2. Create an express route for creating (adding) a new restaurant on your restaurant database.
-3. Create an express route for updating (replacing) an existing restaurant with a new restaurant on your restaurant database based on ID in the route. For example, `restaurant/2` would update the restaurant with an ID of 2.
-4. Create an express route for deleting (removing) a restaurant on your database based on the id in the route. For example, `restaurant/2` would delete the restaurant with an ID of 2.
-5. Test your “Main Assignment” endpoint on Postman by making a `GET`, `POST`, `PUT`, and `DELETE` requests to http://localhost:3000/restaurants/
+In `src/app.js`:
+1. Call `app.use()` and pass it `express.json()` so that we can parse the request body that contain JSON objects.
+2. Call `app.use()` and pass it `express.urlencoded()` so that we can parse the request body with urlencoded values.
+2. Create an Express route for creating (adding) a new restaurant on your restaurant database.
+3. Create an express route for updating (replacing) an existing restaurant with a new restaurant on your restaurant database based on ID in the route. 
+    - For example, `restaurant/2` would update the restaurant with an ID of 2.
+4. Create an express route for deleting (removing) a restaurant on your database based on the id in the route.
+    - For example, `restaurant/2` would delete the restaurant with an ID of 2.
+5. Test  your endpoints on Postman by making a `GET`, `POST`, `PUT`, and `DELETE` requests to http://localhost:3000/restaurants/
+
+### Sending HTTP Requests with Postman
+
+**`DELETE`**
+
+`DELETE` requests typically do not have a request body. To send these requests in Postman:
+
+1. Start the server using node server.js. 
+2. Copy the URL (something like https://localhost:3000/restaurants/1) into Postman. 
+3. Set the method to `DELETE`
+4. Send the request. 
+5. When you refresh the URL, you will see the value has been deleted.
+
+![Delete in Postman](./assets/Delete.png)
+
+**`PUT` and `POST`**
+
+Creating and updating values with `POST` and `PUT` requests requires that we send information in the body of the HTTP request. To send these requests in Postman:
+
+1. Set the method to `PUT` or `POST`
+2. In Postman, select Body and then "raw". 
+3. Paste the object into the body and ensure it is formatted correctly (i.e. JSON key values need to be in quotes).
+4. Send the request
+5. Refresh the page to see the updated array of values.
+
+![Put in Postman](./assets/PutPost.png)
 
 ## Part 4: Express Router
 1. Create a new directory for your express route(s)
