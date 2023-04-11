@@ -13,7 +13,7 @@ npm start
 ```
 
 ## Part 1: `GET` Restaurants
-1. In the `server.js` file, create a `GET` request using Express for the `/restaurants` endpoint
+1. In the `app.js` file, create a `GET` request using Express for the `/restaurants` endpoint
 2. In the `GET` request, return all restaurants via the `Restaurant.findAll()` method. 
     - Remember to use `async` and `await`
     - Note that you will need to run `npm run seed` once in order to put data into the restaurant database.
@@ -23,7 +23,7 @@ npm start
 ![image (26)](https://user-images.githubusercontent.com/44912347/202527699-972e58f4-f0ec-4dda-a3ee-e9def56cf88a.png)
 
 ## Part 2: Route Parameters
-1. In your `server.js` file, use express to handle a `GET` request to the endpoint `"/restaurants"` include a URL Parameter to the endpoint `“restaurants”` named `“id”`.
+1. In your `app.js` file, use express to handle a `GET` request to the endpoint `"/restaurants"` include a URL Parameter to the endpoint `“restaurants”` named `“id”`.
 2. In your `“/restaurants”` with the URL parameter id route handler get the particular restaurant via the method `Restaurant.findByPk()`.
 3. The endpoint will need to fetch the particular restaurant based on the value of your route parameter from the database - have a look at the Sequelize Models `findByPk()` method to help you with this.
 4. Send the found restaurant as a JSON response (`res.json()`).
