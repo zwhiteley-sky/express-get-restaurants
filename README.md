@@ -18,7 +18,7 @@ npm start
     - Remember to use `async` and `await`
     - Note that you will need to run `npm run seed` once in order to put data into the restaurant database.
 3. Send the restaurants as a JSON Response (`res.json()`)
-4. Test your endpoint by visiting http://localhost:3000/restaurants. Your response should look similar to the one shown below:
+4. Test your endpoint by running `node server.js` and visiting http://localhost:3000/restaurants. Your response should look similar to the one shown below:
 
 ![image (26)](https://user-images.githubusercontent.com/44912347/202527699-972e58f4-f0ec-4dda-a3ee-e9def56cf88a.png)
 
