@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const {Restaurant} = require("./models/index")
-const {sequelize} = require("./db");
+const { Restaurant } = require("./models/index")
+const { sequelize } = require("./db");
 
 const port = 3000;
 
@@ -10,5 +10,5 @@ const port = 3000;
 
 app.listen(port, () => {
     sequelize.sync();
-    console.log("Your server is listening on port " + port);
+    console.log(`Listening at http://localhost:${port}/restaurants`);
 })
