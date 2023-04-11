@@ -1,8 +1,5 @@
-const express = require("express");
-const app = express();
-const { Restaurant } = require("./models/index")
+const app = require("./src/app")
 const { sequelize } = require("./db");
-
 const port = 3000;
 
 //TODO: Create your GET Request Route Below: 
