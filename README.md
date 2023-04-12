@@ -70,16 +70,32 @@ Creating and updating values with `POST` and `PUT` requests requires that we sen
 ![Put in Postman](./assets/PutPost.png)
 
 ## Part 4: Express Router
-1. Create a new directory for your express route(s)
-2. Include a file within that directory to represent your express router
-3. Define your express router to be able to handle creating, reading, updating, and deleting resources from your Restaurants database
-4. Export your router
-5. Include a reference to your router in your main express server
-6. Use the express router in your main server
-7. Remove any pre-defined routes from your main server and use only your express router.
+1. Create a new directory called `routes` for your Express router(s)
+2. Include a file (like `restaurants.js`) within the `routes` directory to represent your Express router
+3. Define your Express router to be able to handle creating, reading, updating, and deleting resources from your Restaurants database.
+4. Export your restaurants router
+5. Include a reference to your router in your main express server in `server.js`
+6. Use the Express router in your main server
+7. Remove any pre-defined routes from your main server and use only your Express router.
 8. Test your endpoints using Postman
 
-## Part 5: Server Side Validation
+## Part 5: Unit Tests
+1. In `package.json`, update the test script to be `"test": "jest --watchAll"`.
+2. In the root directory, create an `index.test.js` file.
+    ```shell
+    npm install supertest
+    ```
+3. Create tests that accomplish the following:
+    - Verify that the `GET /restaurants` route returns a status code of 200.
+    - Verify that `GET /restaurants` route returns an array of restaurants
+    - Test that `GET /restaurants` returns the correct number of restaurants
+    - Test that `GET /restaurants` returns the correct restaurant data
+    - Verify that `GET /restaurants/:id` request returns the correct data.
+    - Test that `POST /restaurants` request returns the restaurants array has been updated with the new value.
+    - Verify that `PUT /restaurants/:id` request updates the restaurant array with the provided value
+    - Test that `DELETE /restaurant/:id` deletes the restaurant with the provided id from the array.
+
+## Part 6: Server Side Validation
 1. Run `npm install express-validator` to install the Express Validator package
 2. Include the check and `validationResult` methods from the Express Validator package in your Express Router for restaurants.
 3. Navigate to your POST Request route to `/restaurants` from your Express Router and include a parameter `[]` in between the endpoint and the callback function. 
