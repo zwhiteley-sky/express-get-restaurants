@@ -97,12 +97,24 @@ Creating and updating values with `POST` and `PUT` requests requires that we sen
 
 ## Part 6: Server Side Validation
 1. Run `npm install express-validator` to install the Express Validator package
-2. Include the check and `validationResult` methods from the Express Validator package in your Express Router for restaurants.
+2. Include the `check` and `validationResult` methods from the Express Validator package in your Express router for restaurants.
 3. Navigate to your POST Request route to `/restaurants` from your Express Router and include a parameter `[]` in between the endpoint and the callback function. 
-4. Within the array `[]` include a first item which checks that the “name” field in the `request.body` is not empty and doesn’t only contain whitespace
-5. Within the array `[]` include a second item that checks that the “location” in the `request.body` is not empty and doesn’t only contain whitespace
-6. Within the array `[]` include a third item that checks that the “cuisine” is the `request.body` is not empty and doesn’t only contain whitespace
+4. Within the array `[]` include a first item which checks that the `"name"` field in the `request.body` is not empty and doesn’t only contain whitespace
+5. Within the array `[]` include a second item that checks that the `"location"` in the `request.body` is not empty and doesn’t only contain whitespace
+6. Within the array `[]` include a third item that checks that the `"cuisine"` is the `request.body` is not empty and doesn’t only contain whitespace
 7. Within the callback function, validate the results of your checks and store them in a variable named `errors`
 8. Check that if the errors reference is not empty (there are errors), respond with a JSON that contains the key error and the value `errors.array()`
 9. If the `errors` reference is empty (there are no errors), then continue with adding the restaurant to the Restaurant DB and return a list of all the restaurants including the newly added one.
-10. Test your endpoint using Postman. Check to see if you can add a restaurant without any of the “name”, “location” or “cuisine” fields.
+10. Test your endpoint using Postman. Check to see if you can add a restaurant without any of the `"name"`, `"location"`, and/or `"cuisine"` fields.
+11. In index.test.js, create unit tests that test that an errors array is returned when the `"name"`, `"location"`, and/or `"cuisine"` fields are empty
+
+## Extension Problems 🚀
+
+**Bonus Assignment**: Within the same POST /restaurant route above, use Express Validator to check that the value added to the "name" field on a restaurant has a length between 10 and 30 characters.
+- [You may use this reference](https://github.com/validatorjs/validator.js#validators) 🔍 to help you find the correct method for your solution.
+
+1. Include a fourth item within your array `[]` that checks that the `"name"` field has a length between 10 and 30. (Minimum 10, Maximum 30)
+2. [Use this reference](https://github.com/validatorjs/validator.js#validators) to locate the best method for checking the length of the value passed into the restaurant’s “name” field. Look up how to specify a range within the function you find.
+3. When you find the appropriate method, make sure to include an argument to indicate that the minimum length should be 10 characters, and the maximum length should be 30 characters.
+4. Test using Postman. Try to add a restaurant `"name"` with less than 10 characters, or more than 30 characters.
+5. In `index.test.js`, create a unit test that tests that someone can only add a restaurant name bigger than 10 characters and smaller than 30 characters.
