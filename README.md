@@ -110,6 +110,50 @@ Creating and updating values with `POST` and `PUT` requests requires that we sen
 
 ## Extension Problems 🚀
 
+### Express Restaurant Bonus - Associations
+
+**TASK**: Create a new `Item` and `Menu` model and define the associations between the three models. Update the GET /restaurants route to GET a list of all the Restaurants in the Restaurant database, including the `Menu`(s) that belong to that restaurant, and including the `Item`(s) that belong to that `Menu`. 
+
+1. In the models directory define a `Menu` model. The `Menu` model should have the following properties:
+    - `title`: a string
+2. In the models directory define an `Item` model. The `Item` model should have the following properties:
+    - `name`: a string
+    - `image`: a string
+    - `price`: a number
+    - `vegetarian`: a boolean
+3. Export the models and import into `models/index.js`
+4. In `models/index.js`, define the following association:
+    - A Restaurant may have one or more `Menu`(s), but every `Menu` has one `Restaurant`
+    - There are also many `Item`(s) included in a `Menu` and an `Item` can be on many `Menu`s
+5. In `seed.js`:
+    - Import the `Menu` and `Item`. 
+    - Import the `seedMenu` and `seedItem` data.
+    - Update the `syncSeed` function to bulk create new `Menu` and `Item` instances.
+6. Navigate to your `GET /restaurants` route.
+7. Since you’re making a call to a database, don’t forget to use `async` and `await` as part of the callback argument.
+8. Use Express to load all of the restaurants from the `Restaurant` model.
+9. Within your Sequelize method to find all of the restaurants in the model, include several arguments
+    - Include the `Menu`s as part of the response
+    ```javascript
+    {include: Mode1} //Argument 1
+    ```
+    - Include from the menu, the items in that menu
+    ```javascript
+    {
+        include: Mode1, //Which model should we add here?
+            include: [{
+                model: Mode1,
+                include: [{
+                    model: Model2 //Which model should we add here?
+                }]
+            }]
+    }
+    //Argument 2
+    ```
+10. Test your `GET /restaurants` endpoint using Postman.
+
+### Express Validator
+
 **Bonus Assignment**: Within the same POST /restaurant route above, use Express Validator to check that the value added to the "name" field on a restaurant has a length between 10 and 30 characters.
 - [You may use this reference](https://github.com/validatorjs/validator.js#validators) 🔍 to help you find the correct method for your solution.
 
