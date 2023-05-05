@@ -1,11 +1,11 @@
 const app = require("./src/app")
-const { sequelize } = require("./db");
+const db = require("./db/connection");
 const port = 3000;
 
 //TODO: Create your GET Request Route Below: 
 
 
 app.listen(port, () => {
-    sequelize.sync();
+    db.sync();
     console.log(`Listening at http://localhost:${port}/restaurants`);
 })

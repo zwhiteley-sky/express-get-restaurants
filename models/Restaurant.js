@@ -1,10 +1,10 @@
 const Sequelize = require("sequelize");
-const {sequelize} = require("../db");
+const db = require("../db/connection");
 
-const Restaurant = sequelize.define("restaurants", {
+const Restaurant = db.define("restaurants", {
     name: Sequelize.STRING,
     location: Sequelize.STRING,
     cuisine: Sequelize.STRING
 })
 
-module.exports = {Restaurant};
+module.exports = Restaurant;
