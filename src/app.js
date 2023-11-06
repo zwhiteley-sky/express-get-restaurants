@@ -33,19 +33,22 @@ app.put("/restaurants/:id", async (req, res) => {
 
     const restaurant = await Restaurant.findByPk(id);
     const updated = await restaurant.update(req.body);
-    
+
     res.json(updated);
 });
 
 app.delete("/restaurants/:id", async (req, res) => {
     const id = Number(req.params.id);
-    if (isNaN(id)) res.status(400).send("id must be a number");
+    if (isNaN(id)) return res.status(400).send("id must be a number");
 
-    await Restaurant.destroy({
-        where: { id }
-    });
+    const deleted = await Restaurant.findByPk(id);
 
-    res.status(204).send();
+    if (!deleted)
+        return res.status(404).send("restaurant not found");
+
+    await deleted.destroy();
+
+    res.json(deleted);
 });
 
 
